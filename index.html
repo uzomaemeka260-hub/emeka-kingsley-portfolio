@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Uzoma Emeka Kingsley, AWS Certified DevOps Engineer.">
+    <title>Uzoma Emeka Kingsley | DevOps Engineer</title>
+    <style>
+        :root {
+            --ink: #17212b;
+            --muted: #5f6b73;
+            --paper: #f5f4ef;
+            --white: #ffffff;
+            --line: #d8d9d2;
+            --blue: #0e6b78;
+            --blue-dark: #084b56;
+            --orange: #e2763d;
+            --shadow: 0 14px 40px rgba(23, 33, 43, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--paper);
+            font-family: Georgia, "Times New Roman", serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .shell {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--line);
+            font-family: Arial, sans-serif;
+        }
+
+        .brand {
+            color: var(--blue-dark);
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .nav {
+            display: flex;
+            gap: 24px;
+            font-size: 0.85rem;
+        }
+
+        .nav a {
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        .nav a:hover {
+            color: var(--orange);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            align-items: center;
+            gap: 64px;
+            padding: 82px 0 74px;
+        }
+
+        .eyebrow {
+            margin: 0 0 16px;
+            color: var(--orange);
+            font: 700 0.78rem/1.2 Arial, sans-serif;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 740px;
+            margin: 0;
+            color: var(--blue-dark);
+            font-size: clamp(3.2rem, 8vw, 6.8rem);
+            letter-spacing: -0.06em;
+            line-height: 0.9;
+        }
+
+        .hero-copy {
+            max-width: 650px;
+            margin: 28px 0 0;
+            color: var(--muted);
+            font-size: 1.18rem;
+        }
+
+        .hero-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+            font-family: Arial, sans-serif;
+        }
+
+        .hero-links a {
+            padding: 11px 16px;
+            border: 1px solid var(--blue);
+            color: var(--blue-dark);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .hero-links a.primary {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        .hero-links a:hover {
+            background: var(--orange);
+            border-color: var(--orange);
+            color: var(--white);
+        }
+
+        .portrait-wrap {
+            position: relative;
+        }
+
+        .portrait-wrap::before {
+            position: absolute;
+            inset: 14px -14px -14px 14px;
+            z-index: 0;
+            background: var(--orange);
+            content: "";
+        }
+
+        .portrait {
+            position: relative;
+            z-index: 1;
+            display: block;
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            filter: saturate(0.85);
+        }
+
+        section {
+            padding: 62px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+
+        h2 {
+            margin: 0;
+            color: var(--blue-dark);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            letter-spacing: -0.04em;
+            line-height: 1;
+        }
+
+        .section-number {
+            color: var(--orange);
+            font: 700 0.75rem Arial, sans-serif;
+            letter-spacing: 0.1em;
+        }
+
+        .credential-grid,
+        .skill-grid,
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .panel {
+            padding: 24px;
+            background: var(--white);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+        }
+
+        .panel h3 {
+            margin: 0 0 12px;
+            color: var(--blue);
+            font: 700 0.84rem Arial, sans-serif;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .panel p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .clean-list {
+            display: grid;
+            gap: 8px;
+            margin: 0;
+            padding: 0;
+            color: var(--muted);
+            list-style: none;
+        }
+
+        .clean-list li::before {
+            margin-right: 10px;
+            color: var(--orange);
+            content: "+";
+            font-family: Arial, sans-serif;
+            font-weight: 700;
+        }
+
+        .experience {
+            display: grid;
+            gap: 0;
+        }
+
+        .role {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 36px;
+            padding: 28px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .role:first-child {
+            padding-top: 0;
+        }
+
+        .role-title {
+            margin: 0;
+            color: var(--blue-dark);
+            font-size: 1.35rem;
+        }
+
+        .company {
+            margin-top: 5px;
+            color: var(--orange);
+            font: 700 0.82rem Arial, sans-serif;
+        }
+
+        .date {
+            color: var(--muted);
+            font: 0.78rem Arial, sans-serif;
+        }
+
+        .role ul {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--muted);
+        }
+
+        .project-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .project {
+            display: flex;
+            flex-direction: column;
+            min-height: 260px;
+        }
+
+        .project h3 {
+            color: var(--blue-dark);
+            font: 700 1.2rem Georgia, serif;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+
+        .project h3 a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .project h3 a:hover {
+            color: var(--orange);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .project p {
+            flex: 1;
+            color: var(--muted);
+        }
+
+        .live {
+            color: #17734a;
+            font: 700 0.7rem Arial, sans-serif;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .telemetry {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--line);
+            color: var(--blue);
+            font: 700 0.72rem Arial, sans-serif;
+        }
+
+        .project-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 16px;
+            font: 700 0.72rem Arial, sans-serif;
+        }
+
+        .project-actions a {
+            color: var(--blue);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .project-actions a:hover {
+            color: var(--orange);
+        }
+
+        footer {
+            padding: 28px 0 52px;
+            color: var(--muted);
+            font: 0.78rem Arial, sans-serif;
+        }
+
+        @media (max-width: 760px) {
+            .shell {
+                width: min(100% - 28px, 620px);
+            }
+
+            .nav {
+                gap: 12px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 36px;
+                padding: 56px 0;
+            }
+
+            .portrait-wrap {
+                width: min(220px, 65vw);
+                order: -1;
+            }
+
+            .credential-grid,
+            .skill-grid,
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .role {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .section-heading {
+                align-items: start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shell">
+        <nav class="topbar" aria-label="Main navigation">
+            <div class="brand">UEK / DevOps</div>
+            <div class="nav"><a href="#credentials">Credentials</a><a href="#experience">Experience</a><a
+                    href="#work">Selected work</a></div>
+        </nav>
+
+        <header class="hero">
+            <div>
+                <p class="eyebrow">AWS Certified DevOps Engineer Professional</p>
+                <h1>Cloud systems, made dependable.</h1>
+                <p class="hero-copy">I am Uzoma Emeka Kingsley, a DevOps and cloud infrastructure engineer focused on
+                    automation, delivery systems, and resilient AWS environments.</p>
+                <div class="hero-links">
+                    <a class="primary" href="mailto:uzomaemekakingsley@gmail.com">Email me</a>
+                    <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+                    <a href="https://github.com/Uzomaemekakingsley" target="_blank" rel="noreferrer">GitHub</a>
+                </div>
+            </div>
+            <div class="portrait-wrap"><img class="portrait" src="profile.jpg" alt="Portrait of Uzoma Emeka Kingsley">
+            </div>
+        </header>
+
+        <main>
+            <section id="credentials">
+                <div class="section-heading">
+                    <h2>Credentials</h2><span class="section-number">01 / FOUNDATION</span>
+                </div>
+                <div class="credential-grid">
+                    <article class="panel">
+                        <h3>Certifications</h3>
+                        <ul class="clean-list">
+                            <li>AWS Certified DevOps Engineer - Professional</li>
+                            <li>AWS Certified Solutions Architect - Associate</li>
+                            <li>Certified Kubernetes Administrator</li>
+                            <li>Certified Terraform Associate</li>
+                        </ul>
+                    </article>
+                    <article class="panel">
+                        <h3>Education</h3>
+                        <p>BSc Degree in Software Development<br>Miva Open University</p>
+                    </article>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-heading">
+                    <h2>Tools I use</h2><span class="section-number">02 / PRACTICE</span>
+                </div>
+                <div class="skill-grid">
+                    <article class="panel">
+                        <h3>Delivery</h3>
+                        <ul class="clean-list">
+                            <li>Jenkins</li>
+                            <li>GitHub Actions</li>
+                            <li>GitLab CI/CD</li>
+                        </ul>
+                    </article>
+                    <article class="panel">
+                        <h3>Cloud &amp; containers</h3>
+                        <ul class="clean-list">
+                            <li>AWS</li>
+                            <li>Kubernetes and Helm</li>
+                            <li>Docker</li>
+                        </ul>
+                    </article>
+                    <article class="panel">
+                        <h3>Infrastructure</h3>
+                        <ul class="clean-list">
+                            <li>Terraform</li>
+                            <li>AWS CloudFormation</li>
+                            <li>LocalStack</li>
+                        </ul>
+                    </article>
+                    <article class="panel">
+                        <h3>Systems</h3>
+                        <ul class="clean-list">
+                            <li>Python and Bash</li>
+                            <li>Prometheus and Grafana</li>
+                            <li>Nginx</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section id="experience">
+                <div class="section-heading">
+                    <h2>Experience</h2><span class="section-number">03 / IN PRACTICE</span>
+                </div>
+                <div class="experience">
+                    <article class="role">
+                        <div>
+                            <h3 class="role-title">DevOps Engineer</h3>
+                            <div class="company">The Lettings Hub</div>
+                            <div class="date">Jan 2024 - Present<br>Peterborough, England</div>
+                        </div>
+                        <ul>
+                            <li>Design and maintain CI/CD pipelines with GitHub Actions.</li>
+                            <li>Use Terraform, Docker, Kubernetes, and AWS to improve delivery and reliability.</li>
+                            <li>Optimize AWS costs while maintaining high availability.</li>
+                        </ul>
+                    </article>
+                    <article class="role">
+                        <div>
+                            <h3 class="role-title">DevOps Engineer</h3>
+                            <div class="company">Kinchris Switch Enterprise</div>
+                            <div class="date">Aug 2021 - Dec 2024<br>Lagos, Nigeria</div>
+                        </div>
+                        <ul>
+                            <li>Designed CI/CD workflows with Jenkins, CloudFormation, and Terraform.</li>
+                            <li>Orchestrated containerized workloads using Docker and Kubernetes.</li>
+                        </ul>
+                    </article>
+                    <article class="role">
+                        <div>
+                            <h3 class="role-title">AWS Cloud Engineer</h3>
+                            <div class="company">Kaboem Haulage Ltd</div>
+                            <div class="date">July 2019 - August 2021<br>Lagos, Nigeria</div>
+                        </div>
+                        <ul>
+                            <li>Migrated legacy applications to AWS infrastructure.</li>
+                            <li>Configured secure multi-subnet VPC architectures.</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section id="work">
+                <div class="section-heading">
+                    <h2>Selected work</h2><span class="section-number">04 / BLUEPRINTS</span>
+                </div>
+                <div class="project-grid">
+                    <article class="panel project">
+                        <h3><a href="https://github.com/uzomaemeka260-hub/aws-3tier-multi-az-monorepo" target="_blank"
+                                rel="noreferrer">aws-3tier-multi-az-monorepo</a> <span class="live">Public repo</span>
+                        </h3>
+                        <p>Production-grade three-tier AWS infrastructure across multiple availability zones, with
+                            public and internal load balancers, Nginx, Node.js, RDS PostgreSQL, EFS, and
+                            Terraform-managed deployment.</p>
+                        <div class="project-actions"><a
+                                href="https://github.com/uzomaemeka260-hub/aws-3tier-multi-az-monorepo" target="_blank"
+                                rel="noreferrer">View source</a></div>
+                        <div class="telemetry">Terraform / AWS / GitHub Actions</div>
+                    </article>
+                    <article class="panel project">
+                        <h3><a href="https://github.com/uzomaemeka260-hub/aws-cloud-native-serverless-stack"
+                                target="_blank" rel="noreferrer">aws-cloud-native-serverless-stack</a></h3>
+                        <p>Local pre-production simulation combining React, Express, Terraform, LocalStack, Docker
+                            Compose, DynamoDB-compatible storage, and GitHub Actions.</p>
+                        <div class="project-actions"><a
+                                href="https://github.com/uzomaemeka260-hub/aws-cloud-native-serverless-stack"
+                                target="_blank" rel="noreferrer">View source</a></div>
+                        <div class="telemetry">LocalStack / Docker / Terraform</div>
+                    </article>
+                    <article class="panel project">
+                        <h3><a href="https://github.com/Uzomaemekakingsley/example-voting-app" target="_blank"
+                                rel="noreferrer">example-voting-app</a> <span class="live">Public repo</span></h3>
+                        <p>Distributed container application demonstrating Docker, Compose, Swarm, and Kubernetes.</p>
+                        <div class="project-actions"><a href="https://github.com/Uzomaemekakingsley/example-voting-app"
+                                target="_blank" rel="noreferrer">View source</a></div>
+                        <div class="telemetry">Docker / Kubernetes / Compose</div>
+                    </article>
+                    <article class="panel project">
+                        <h3><a href="https://github.com/Uzomaemekakingsley/terraform-eks" target="_blank"
+                                rel="noreferrer">terraform-eks</a> <span class="live">Public repo</span></h3>
+                        <p>Terraform configuration for provisioning an Amazon EKS cluster with autoscaling.</p>
+                        <div class="project-actions"><a href="https://github.com/Uzomaemekakingsley/terraform-eks"
+                                target="_blank" rel="noreferrer">View source</a></div>
+                        <div class="telemetry">Terraform / EKS / AWS</div>
+                    </article>
+                    <article class="panel project">
+                        <h3><a href="https://github.com/Uzomaemekakingsley/github_projects" target="_blank"
+                                rel="noreferrer">github_projects</a></h3>
+                        <p>GitHub pipeline projects focused on repeatable automation and delivery workflows.</p>
+                        <div class="project-actions"><a href="https://github.com/Uzomaemekakingsley/github_projects"
+                                target="_blank" rel="noreferrer">View source</a></div>
+                        <div class="telemetry">GitHub Actions / CI</div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer>Uzoma Emeka Kingsley / Peterborough, UK / <a
+                href="mailto:uzomaemekakingsley@gmail.com">uzomaemekakingsley@gmail.com</a></footer>
+    </div>
+
+    <script>
+        const repositoryUser = "Uzomaemekakingsley";
+        const repositoryTargets = {
+            "terraform-eks": "repo-1-telemetry",
+            "example-voting-app": "repo-2-telemetry",
+            "github_projects": "repo-3-telemetry"
+        };
+
+        async function loadRepositoryMetrics() {
+            try {
+                const response = await fetch(`https://api.github.com/users/${repositoryUser}/repos?per_page=100`);
+                if (!response.ok) throw new Error("GitHub request failed");
+                const repositories = await response.json();
+                repositories.forEach((repository) => {
+                    const target = document.getElementById(repositoryTargets[repository.name]);
+                    if (target) target.innerHTML = `<span>${repository.language || "IaC"}</span><span>${repository.stargazers_count} stars</span><span>${repository.forks_count} forks</span>`;
+                });
+            } catch (error) {
+                document.querySelectorAll(".telemetry").forEach((target) => { target.textContent = "Metrics unavailable"; });
+            }
+        }
+
+        loadRepositoryMetrics();
+    </script>
+</body>
+
+</html>
