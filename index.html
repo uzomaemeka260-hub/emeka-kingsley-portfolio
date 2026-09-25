@@ -8,15 +8,21 @@
     <title>Uzoma Emeka Kingsley | DevOps Engineer</title>
     <style>
         :root {
-            --ink: #17212b;
-            --muted: #5f6b73;
-            --paper: #f5f4ef;
-            --white: #ffffff;
-            --line: #d8d9d2;
-            --blue: #0e6b78;
-            --blue-dark: #084b56;
-            --orange: #e2763d;
-            --shadow: 0 14px 40px rgba(23, 33, 43, 0.08);
+            --bg: #121d2d;
+            --bg-soft: #1a2b3c;
+            --panel: rgba(18, 27, 38, 0.9);
+            --panel-strong: #16293a;
+            --panel-alt: #1e3042;
+            --border: rgba(184, 202, 225, 0.18);
+            --text: #edf5ff;
+            --muted: #bfd0e8;
+            --white: #f4f8ff;
+            --line: rgba(184, 202, 225, 0.18);
+            --blue: #7fd2ff;
+            --blue-dark: #c8ebff;
+            --orange: #ffbf7a;
+            --gold: #f5d58b;
+            --shadow: 0 18px 40px rgba(4, 9, 15, 0.22);
         }
 
         * {
@@ -29,10 +35,13 @@
 
         body {
             margin: 0;
-            color: var(--ink);
-            background: var(--paper);
-            font-family: Georgia, "Times New Roman", serif;
-            line-height: 1.6;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top, rgba(127, 210, 255, 0.14), transparent 26%),
+                radial-gradient(circle at right, rgba(181, 216, 255, 0.12), transparent 24%),
+                var(--bg);
+            font-family: "Segoe UI", Arial, sans-serif;
+            line-height: 1.7;
         }
 
         a {
@@ -187,15 +196,20 @@
 
         .credential-grid,
         .skill-grid,
-        .project-grid {
+        .project-grid,
+        .hobby-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 16px;
         }
 
+        .hobby-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
         .panel {
             padding: 24px;
-            background: var(--white);
+            background: var(--panel);
             border: 1px solid var(--line);
             box-shadow: var(--shadow);
         }
@@ -304,10 +318,17 @@
         }
 
         .live {
-            color: #17734a;
-            font: 700 0.7rem Arial, sans-serif;
-            letter-spacing: 0.08em;
+            display: inline-block;
+            margin-left: 8px;
+            padding: 3px 7px;
+            border: 1px solid rgba(110, 231, 183, 0.4);
+            border-radius: 999px;
+            background: rgba(16, 185, 129, 0.08);
+            color: #8de7c1;
+            font: 700 0.58rem Arial, sans-serif;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
+            vertical-align: middle;
         }
 
         .telemetry {
@@ -366,7 +387,8 @@
 
             .credential-grid,
             .skill-grid,
-            .project-grid {
+            .project-grid,
+            .hobby-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -387,8 +409,8 @@
     <div class="shell">
         <nav class="topbar" aria-label="Main navigation">
             <div class="brand">UEK / DevOps</div>
-            <div class="nav"><a href="#credentials">Credentials</a><a href="#experience">Experience</a><a
-                    href="#work">Selected work</a></div>
+            <div class="nav"><a href="#credentials">Credentials</a><a href="#hobbies">Hobbies</a><a
+                    href="#experience">Experience</a><a href="#work">Public projects</a></div>
         </nav>
 
         <header class="hero">
@@ -471,6 +493,31 @@
                 </div>
             </section>
 
+            <section id="hobbies">
+                <div class="section-heading">
+                    <h2>Hobbies &amp; life outside work</h2><span class="section-number">03 / BALANCE</span>
+                </div>
+                <div class="hobby-grid">
+                    <article class="panel">
+                        <h3>Sports</h3>
+                        <p>I enjoy staying active through football, fitness training, and regular exercise routines.</p>
+                    </article>
+                    <article class="panel">
+                        <h3>Music</h3>
+                        <p>Listening to music is one of my favourite ways to relax, recharge, and stay inspired.</p>
+                    </article>
+                    <article class="panel">
+                        <h3>Walks</h3>
+                        <p>I love evening walks to unwind, reflect, and enjoy a healthier work-life balance.</p>
+                    </article>
+                    <article class="panel">
+                        <h3>Family &amp; friends</h3>
+                        <p>Spending quality time with family and friends keeps me grounded and motivated in everything I
+                            do.</p>
+                    </article>
+                </div>
+            </section>
+
             <section id="experience">
                 <div class="section-heading">
                     <h2>Experience</h2><span class="section-number">03 / IN PRACTICE</span>
@@ -523,7 +570,7 @@
 
             <section id="work">
                 <div class="section-heading">
-                    <h2>Selected work</h2><span class="section-number">04 / BLUEPRINTS</span>
+                    <h2>Public projects</h2><span class="section-number">04 / PUBLIC REPOS</span>
                 </div>
                 <div class="project-grid">
                     <article class="panel project">
@@ -540,7 +587,8 @@
                     </article>
                     <article class="panel project">
                         <h3><a href="https://github.com/uzomaemeka260-hub/aws-cloud-native-serverless-stack"
-                                target="_blank" rel="noreferrer">aws-cloud-native-serverless-stack</a></h3>
+                                target="_blank" rel="noreferrer">aws-cloud-native-serverless-stack</a> <span
+                                class="live">Public repo</span></h3>
                         <p>Local pre-production simulation combining React, Express, Terraform, LocalStack, Docker
                             Compose, DynamoDB-compatible storage, and GitHub Actions.</p>
                         <div class="project-actions"><a
@@ -566,7 +614,7 @@
                     </article>
                     <article class="panel project">
                         <h3><a href="https://github.com/Uzomaemekakingsley/github_projects" target="_blank"
-                                rel="noreferrer">github_projects</a></h3>
+                                rel="noreferrer">github_projects</a> <span class="live">Public repo</span></h3>
                         <p>GitHub pipeline projects focused on repeatable automation and delivery workflows.</p>
                         <div class="project-actions"><a href="https://github.com/Uzomaemekakingsley/github_projects"
                                 target="_blank" rel="noreferrer">View source</a></div>
